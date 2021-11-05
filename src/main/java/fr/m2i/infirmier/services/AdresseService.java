@@ -10,4 +10,5 @@ public interface AdresseService {
     public Optional<Adresse> findById(Long id_adresse);
     public Adresse create(Adresse adresse);
     public Adresse update(Adresse adresse);
+    List<Adresse> findbyTermName(String ville);
 }

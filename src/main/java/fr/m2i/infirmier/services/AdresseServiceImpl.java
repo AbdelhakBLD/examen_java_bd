@@ -30,4 +30,9 @@ public class AdresseServiceImpl implements AdresseService {
     public Adresse update(Adresse adresse) {
         return this.adresseRepository.save(adresse);
     }
+
+    @Override
+    public List<Adresse> findbyTermName(String ville) {
+        return this.adresseRepository.findbyNameContainTerm(ville);
+    }
 }

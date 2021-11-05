@@ -14,19 +14,24 @@ public class AdresseController {
         this.adresseService = adresseService;
     }
 
-    @GetMapping("/infirmiers")
+    @GetMapping("/adresses")
     public List<Adresse> findAll() {
         return this.adresseService.findAll();
     }
 
-    @GetMapping("/infirmiers/{id}")
+    @GetMapping("/adresses/{id}")
     public Optional<Adresse> findById(@PathVariable Long id) {
         return this.adresseService.findById(id);
     }
 
-    @PostMapping("/infirmiers")
+    @PostMapping("/adresses")
     @ResponseBody
     public Adresse send(@RequestBody Adresse adresse) {
         return this.adresseService.create(adresse);
+    }
+
+    @GetMapping("/adresses?ville={ville}")
+    public List<Adresse> findbyTermName(@PathVariable String ville) {
+        return this.adresseService.findbyTermName(ville);
     }
 }
