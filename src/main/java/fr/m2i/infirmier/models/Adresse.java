@@ -18,6 +18,6 @@ public class Adresse {
     private Long id;
     private String numero;
     private String rue;
-    private Integer codePostale;
+    private Integer codePostal;
     private String ville;
 }

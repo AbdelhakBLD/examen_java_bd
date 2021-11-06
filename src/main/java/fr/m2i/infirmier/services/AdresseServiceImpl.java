@@ -2,6 +2,7 @@ package fr.m2i.infirmier.services;
 
 import fr.m2i.infirmier.models.Adresse;
 import fr.m2i.infirmier.models.Infirmier;
+import fr.m2i.infirmier.models.Patient;
 import fr.m2i.infirmier.repositories.AdresseRepository;
 import fr.m2i.infirmier.repositories.InfirmierRepository;
 
@@ -23,6 +24,10 @@ public class AdresseServiceImpl implements AdresseService {
         return this.adresseRepository.findById(id_adresse);
     }
 
+    public Optional<List<Adresse>> findByVille(String ville) {
+        return this.adresseRepository.findByVille(ville);
+    }
+
     public Adresse create(Adresse adresse) {
         return this.adresseRepository.save(adresse);
     }
@@ -31,8 +36,4 @@ public class AdresseServiceImpl implements AdresseService {
         return this.adresseRepository.save(adresse);
     }
 
-    @Override
-    public List<Adresse> findbyTermName(String ville) {
-        return this.adresseRepository.findbyNameContainTerm(ville);
-    }
 }

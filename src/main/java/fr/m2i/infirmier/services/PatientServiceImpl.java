@@ -8,7 +8,7 @@ import fr.m2i.infirmier.repositories.PatientRepository;
 import java.util.List;
 import java.util.Optional;
 
-public class PatientServiceImpl implements PatientService{
+public class PatientServiceImpl implements PatientService {
     private PatientRepository patientRepository;
 
     public PatientServiceImpl(PatientRepository patientRepository) {
@@ -19,8 +19,12 @@ public class PatientServiceImpl implements PatientService{
         return this.patientRepository.findAll();
     }
 
-    public Optional<Patient> findById(Long id_infirmier) {
-        return this.patientRepository.findById(id_infirmier);
+    public Optional<Patient> findById(Long id_patient) {
+        return this.patientRepository.findById(id_patient);
+    }
+
+    public Optional<List<Patient>> findPatientByNomAndByPrenom(String nom, String prenom) {
+        return this.patientRepository.findPatientByNomAndByPrenom(nom, prenom);
     }
 
     public Patient create(Patient patient) {

@@ -2,6 +2,7 @@ package fr.m2i.infirmier.controllers;
 
 import fr.m2i.infirmier.models.Patient;
 import fr.m2i.infirmier.services.PatientService;
+import org.springframework.context.annotation.Primary;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class PatientController {
         this.patientService = patientService;
     }
 
-    @GetMapping("/patients")
+    @GetMapping("/patients/all")
     public List<Patient> findAll() {
         return this.patientService.findAll();
     }
@@ -25,6 +26,11 @@ public class PatientController {
     @GetMapping("/patients/{id}")
     public Optional<Patient> findById(@PathVariable Long id) {
         return this.patientService.findById(id);
+    }
+
+    @GetMapping("/patients")
+    public Optional<List<Patient>> findByNomAndPrenom(@RequestParam("nom") String nom, @RequestParam("prenom")  String prenom) {
+        return this.patientService.findPatientByNomAndByPrenom(nom, prenom);
     }
 
     @PostMapping("/patients")
@@ -37,4 +43,6 @@ public class PatientController {
     public void delete(@PathVariable Long id) {
         this.patientService.delete(id);
     }
+
+
 }
